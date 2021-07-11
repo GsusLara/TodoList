@@ -1,0 +1,54 @@
+.title{
+font-family: 'Akaya Kanadaka', cursive;
+font-size: 5rem;
+}
+.logbox{
+    height: 80vh;
+}
+#textoBienvenida{
+    color: rgba(53, 53, 53, 0.884);
+    font-family: 'Akaya Kanadaka', cursive;
+    font-size: 2rem;
+}
+#login{
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #6E7576;
+    font-size: 2rem;
+    height: 15%;
+    border:none;
+    outline:none;
+    background: transparent;
+    transition:.3s;
+    border-radius: 60%;
+  }
+  #login:focus{
+     box-shadow:0 0 2rem 0 dodgerBlue;
+  }
+
+// input::placeholder{
+//     text-align: center;
+//     font-family: 'Open Sans Condensed', sans-serif;
+//     font-size: 2rem;
+// }
+// #lastItem{
+//     text-align: left;
+//     font-family: 'Open Sans Condensed', sans-serif;
+//     color: rgb(140, 165, 167);
+//     font-size: 1rem;
+// }
+// li{
+//     font-family: 'Akaya Telivigala', cursive;
+//     font-size: 1.5rem;
+// }
+// #save{
+//     float: right;
+// }
+
+
+
+
+//   #btaceptado{
+//       position: absolute;
+//       bottom: 0;
+//       left: 45%;
+//   }
