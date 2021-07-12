@@ -1,6 +1,6 @@
 # Todo List
 
-listado de tareas a realizar por el usuariop. Proyecto practica de curso 4geeks academy.
+Este proyecto trata de listado de tareas a realizar por el usuario. Proyecto practica de curso 4geeks academy.
 
 ## iniciar un nuevo proyecto 
 

@@ -1,0 +1,23 @@
+input::placeholder {
+  text-align: center;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 2rem;
+}
+#lastItem {
+  text-align: left;
+  font-family: "Open Sans Condensed", sans-serif;
+  color: rgb(140, 165, 167);
+  font-size: 1rem;
+}
+li {
+  font-family: "Akaya Telivigala", cursive;
+  font-size: 1.5rem;
+}
+#exit {
+  float: right;
+}
+.delete {
+  display: "block";
+  margin-left: "2%";
+  float: "left";
+}
