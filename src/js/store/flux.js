@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								body: JSON.stringify([]),
 								headers: { "Content-Type": "application/json" }
 							});
-							return "Usuario creado"; //retorna que el usuario se creo correctamente
+							return `Welcome ${usuario}`; //retorna que el usuario se creo correctamente
 						}
 					})
 					.then(result => {
