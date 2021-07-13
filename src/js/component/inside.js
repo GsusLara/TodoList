@@ -1,21 +1,32 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
-export const Demo = () => {
+export const Inside = () => {
 	const { store, actions } = useContext(Context);
 	const [tarea, setTarea] = useState("");
 	const [lista, setLista] = useState(store.tareas);
 
-	let borrar = dato => {
+	const borrar = dato => {
 		//funcion para borrar una tarea en la lista
 		setLista(lista.filter(salida => salida !== dato)); //elimina esa tarea en el array lista haciendo un filtrado de la totalidad por parabra
-		actions.actualizar(lista, store.urlUsuario);
+	};
+
+	const userdel = enlace => {
+		actions.borradoUser(enlace);
+		actions.portada(true);
+		setLista([]);
+	};
+
+	const guardar = (tareaslista, enlaseUsuario) => {
+		if (tareaslista.length == 0) tareaslista = ["sample task"];
+		actions.guardarTareas(tareaslista, enlaseUsuario);
+		actions.portada(true);
+		setLista([]);
 	};
 
 	return (
-		<div className=" row justify-content-center text-center mt-5">
+		<div className="row justify-content-center text-center mt-5">
 			<div className="col-12">
 				<h1 className="title">ToDos</h1>
 			</div>
@@ -33,7 +44,6 @@ export const Demo = () => {
 								if (tarea !== "") {
 									//evita el ingreso de datos en blanco
 									setLista(lista => [...lista, tarea]); //carga esa tarea al array lista
-									actions.actualizar(lista, store.urlUsuario);
 									setTarea(""); //limpia la variable
 								} else {
 									alert("Type a task and press enter"); //si preciono enter y estaba el input en blanco
@@ -61,26 +71,22 @@ export const Demo = () => {
 
 					<li className="list-group-item" id="lastItem">
 						{lista.length} item left
-						<Link to="/">
-							<button //boton para guardar la info
-								id="exit"
-								type="button"
-								className="btn btn-primary btn-sm">
-								exit
-							</button>
-						</Link>
+						<button //boton para guardar la info
+							type="button"
+							className="btn btn-secondary btn-sm BotBorrarUsuario"
+							onClick={() => userdel(store.urlUsuario)}>
+							Delete user
+						</button>
 					</li>
 				</ul>
 			</div>
 			<div className="col-12">
-				<Link to="/">
-					<button //boton para borrar usuario
-						type="button"
-						className="btn btn-secondary btn-sm delete mb-5"
-						onClick={() => actions.userborrado(store.urlUsuario)}>
-						Delete user
-					</button>
-				</Link>
+				<button //boton para borrar usuario
+					type="button"
+					className="btn btn-primary mb-5"
+					onClick={() => guardar(lista, store.urlUsuario)}>
+					Save and exit
+				</button>
 			</div>
 		</div>
 	);

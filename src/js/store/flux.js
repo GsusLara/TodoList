@@ -1,10 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			externa: true,
 			tareas: [],
 			urlUsuario: ""
 		},
 		actions: {
+			portada: estado => {
+				setStore({ externa: estado });
+			},
 			ingreso: usuario => {
 				let temporal = [];
 				let url = `https://assets.breatheco.de/apis/fake/todos/user/${usuario}`;
@@ -35,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							for (let i = 0; i < result.length; i++) {
 								temporal.push(result[i].label); //descompone el array que manda el api y alimenta la variable temporal
 							}
+							temporal = temporal.filter(salida => salida !== "sample task");
 							setStore({ tareas: temporal }); //carga la variable tareas con las tareas que provienen de la variable temporal
 							temporal = []; //limpia la variable temporal
 						} else {
@@ -43,8 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => alert("error", error)); //captura otros errores
 			},
-			actualizar: (nuevaListaTareas, direccionUsuario) => {
-				setStore({ tareas: nuevaListaTareas });
+			guardarTareas: (nuevaListaTareas, direccionUsuario) => {
 				let subir = nuevaListaTareas.map(item => {
 					///formatea el array contenido en lista, para que sea entendido por la api, agregando etiquetas que necesita
 					let obj = { label: "", done: false };
@@ -70,8 +74,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(result => alert(result))
 					.catch(error => alert("error", error)); //captura cualquier otro tipo de error
+				setStore({ tareas: [] });
 			},
-			userborrado: direccionUsuario => {
+			borradoUser: direccionUsuario => {
 				//funcion para eliminar un usuario
 				fetch(direccionUsuario, { method: "DELETE" }) //solicitud a la api
 					.then(response => {
